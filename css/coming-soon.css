@@ -1,0 +1,199 @@
+/* =========================
+   Coming Soon Page
+========================= */
+
+.coming-soon-main {
+    flex: 1 1 auto;
+    min-height: 0;
+
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 40px;
+}
+
+
+/* =========================
+   Coming Soon Content
+========================= */
+
+.coming-soon {
+    width: min(700px, 100%);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+}
+
+
+/* =========================
+   Logo
+========================= */
+
+.coming-soon-logo {
+    width: min(260px, 40vw);
+    height: auto;
+
+    margin-bottom: 30px;
+
+    filter:
+        drop-shadow(
+            0 0 25px
+            rgba(var(--accent-rgb), 0.18)
+        );
+}
+
+
+/* =========================
+   Status
+========================= */
+
+.coming-soon-status {
+    margin-bottom: 14px;
+
+    color: var(--accent);
+
+    font-size: 12px;
+    font-weight: 800;
+
+    letter-spacing: 0.28em;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================
+   Heading
+========================= */
+
+.coming-soon h1 {
+    margin-bottom: 16px;
+
+    color: var(--text);
+
+    font-size: clamp(36px, 6vw, 64px);
+    font-weight: 900;
+
+    line-height: 1;
+
+    letter-spacing: -0.04em;
+}
+
+
+/* =========================
+   Description
+========================= */
+
+.coming-soon p {
+    max-width: 560px;
+
+    color: var(--text-soft);
+
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+
+/* =========================
+   Accent Line
+========================= */
+
+.coming-soon-line {
+    width: 70px;
+    height: 2px;
+
+    margin-top: 30px;
+
+    background: var(--accent);
+
+    box-shadow:
+        0 0 15px
+        rgba(var(--accent-rgb), 0.35);
+}
+
+
+/* =========================
+   Back Home
+========================= */
+
+.coming-soon-home {
+    margin-top: 30px;
+
+    padding: 11px 20px;
+
+    border: 1px solid
+        rgba(var(--accent-rgb), 0.35);
+
+    border-radius: 12px;
+
+    background:
+        rgba(var(--accent-rgb), 0.07);
+
+    color: var(--accent);
+
+    font-size: 12px;
+    font-weight: 700;
+
+    text-decoration: none;
+
+    transition:
+        background var(--transition),
+        border-color var(--transition),
+        color var(--transition),
+        transform var(--transition);
+}
+
+.coming-soon-home:hover {
+    background:
+        rgba(var(--accent-rgb), 0.14);
+
+    border-color:
+        rgba(var(--accent-rgb), 0.6);
+
+    color: var(--accent-light);
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================
+   Mobile
+========================= */
+
+@media (max-width: 800px) {
+
+    .coming-soon-main {
+        padding: 30px 20px;
+    }
+
+    .coming-soon-logo {
+        width: min(220px, 60vw);
+
+        margin-bottom: 24px;
+    }
+
+    .coming-soon-status {
+        font-size: 10px;
+    }
+
+    .coming-soon h1 {
+        font-size: clamp(36px, 12vw, 52px);
+    }
+
+    .coming-soon p {
+        font-size: 13px;
+    }
+
+    .coming-soon-line {
+        margin-top: 24px;
+    }
+
+    .coming-soon-home {
+        margin-top: 24px;
+    }
+}

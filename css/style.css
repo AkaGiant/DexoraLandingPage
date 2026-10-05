@@ -1,0 +1,1148 @@
+/* =========================
+   Variables
+========================= */
+
+:root {
+    --background: #111415;
+
+    --accent: #d62828;
+    --accent-light: #ef4444;
+    --accent-rgb: 214, 40, 40;
+
+    --text: #ffffff;
+    --text-soft: rgba(255, 255, 255, 0.68);
+    --text-muted: rgba(255, 255, 255, 0.42);
+
+    --border: rgba(255, 255, 255, 0.10);
+
+    --content-width: 1100px;
+
+    --nav-height: 58px;
+    --footer-height: 70px;
+
+    --transition: 0.3s ease;
+}
+
+
+/* =========================
+   Purple Theme
+========================= */
+
+html[data-theme="purple"] {
+    --accent: #7f00ff;
+    --accent-light: #a855f7;
+    --accent-rgb: 127, 0, 255;
+}
+
+
+/* =========================
+   Reset
+========================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+}
+
+
+/* =========================
+   Body
+========================= */
+
+body {
+    min-height: 100dvh;
+
+    display: flex;
+    flex-direction: column;
+
+    background: var(--background);
+    color: var(--text);
+
+    font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    transition:
+        background var(--transition),
+        color var(--transition);
+}
+
+
+/* =========================
+   Background Atmosphere
+========================= */
+
+body::before {
+    content: "";
+
+    position: fixed;
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            circle at 50% 25%,
+            rgba(var(--accent-rgb), 0.12),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 10% 90%,
+            rgba(var(--accent-rgb), 0.07),
+            transparent 30%
+        );
+
+    z-index: -2;
+}
+
+
+/* =========================
+   Background Grid
+========================= */
+
+body::after {
+    content: "";
+
+    position: fixed;
+    inset: 0;
+
+    pointer-events: none;
+
+    background-image:
+        linear-gradient(
+            rgba(255, 255, 255, 0.018) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.018) 1px,
+            transparent 1px
+        );
+
+    background-size: 40px 40px;
+
+    mask-image: linear-gradient(
+        to bottom,
+        transparent,
+        black 20%,
+        black 80%,
+        transparent
+    );
+
+    z-index: -1;
+}
+
+
+/* =========================
+   Navigation
+========================= */
+
+.navbar {
+    flex: 0 0 var(--nav-height);
+
+    width: min(
+        var(--content-width),
+        calc(100% - 40px)
+    );
+
+    height: var(--nav-height);
+
+    margin: 16px auto 0;
+
+    padding: 0 22px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border: 1px solid var(--border);
+    border-radius: 18px;
+
+    background: rgba(255, 255, 255, 0.045);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.20),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+
+/* =========================
+   Navigation Brand
+========================= */
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+
+    color: var(--text);
+
+    font-size: 15px;
+    font-weight: 800;
+
+    letter-spacing: 0.16em;
+
+    text-decoration: none;
+}
+
+.nav-brand span {
+    color: var(--accent);
+}
+
+
+/* =========================
+   Desktop Navigation Links
+========================= */
+
+.nav-links {
+    display: flex;
+    align-items: center;
+
+    gap: 28px;
+}
+
+.nav-links a {
+    position: relative;
+
+    color: var(--text-soft);
+
+    font-size: 13px;
+    font-weight: 600;
+
+    text-decoration: none;
+
+    transition:
+        color var(--transition),
+        transform var(--transition);
+}
+
+.nav-links a::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: -7px;
+
+    height: 2px;
+
+    background: var(--accent);
+
+    transform: scaleX(0);
+    transform-origin: center;
+
+    transition: transform var(--transition);
+}
+
+.nav-links a:hover {
+    color: var(--text);
+}
+
+.nav-links a:hover::after {
+    transform: scaleX(1);
+}
+
+
+/* =========================
+   Mobile Menu Button
+========================= */
+
+.mobile-menu {
+    display: none;
+
+    width: 36px;
+    height: 36px;
+
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid var(--border);
+    border-radius: 10px;
+
+    background: rgba(255, 255, 255, 0.04);
+
+    color: var(--text);
+
+    cursor: pointer;
+}
+
+.mobile-menu span,
+.mobile-menu span::before,
+.mobile-menu span::after {
+    display: block;
+
+    width: 16px;
+    height: 2px;
+
+    background: currentColor;
+
+    border-radius: 999px;
+
+    transition: var(--transition);
+}
+
+.mobile-menu span {
+    position: relative;
+}
+
+.mobile-menu span::before,
+.mobile-menu span::after {
+    content: "";
+
+    position: absolute;
+    left: 0;
+}
+
+.mobile-menu span::before {
+    top: -6px;
+}
+
+.mobile-menu span::after {
+    top: 6px;
+}
+
+
+/* =========================
+   Mobile Navigation
+========================= */
+
+.mobile-nav {
+    display: none;
+
+    position: absolute;
+
+    top: 78px;
+    left: 10px;
+    right: 10px;
+
+    padding: 10px;
+
+    border: 1px solid var(--border);
+    border-radius: 16px;
+
+    background: rgba(20, 22, 23, 0.94);
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    z-index: 50;
+}
+
+.mobile-nav.active {
+    display: flex;
+    flex-direction: column;
+}
+
+.mobile-nav a {
+    padding: 13px 14px;
+
+    color: var(--text-soft);
+
+    border-radius: 10px;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    text-decoration: none;
+
+    transition: var(--transition);
+}
+
+.mobile-nav a:hover {
+    color: var(--text);
+
+    background: rgba(255, 255, 255, 0.05);
+}
+
+
+/* =========================
+   Main Content
+========================= */
+
+main {
+    flex: 1 1 auto;
+    min-height: 0;
+
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding:
+        clamp(12px, 2vh, 24px)
+        40px;
+}
+
+
+/* =========================
+   Brand Section
+========================= */
+
+.brand {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+
+    gap: clamp(6px, 1.2vh, 12px);
+
+    margin-bottom:
+        clamp(16px, 3vh, 32px);
+
+    flex-shrink: 1;
+}
+
+
+/* =========================
+   Logo
+========================= */
+
+.logo {
+    display: block;
+
+    /*
+     * Scales according to both width
+     * and viewport height.
+     */
+    width: min(
+        380px,
+        34vw,
+        38vh
+    );
+
+    height: auto;
+
+    max-width: 100%;
+
+    flex-shrink: 1;
+
+    filter:
+        drop-shadow(
+            0 0 25px
+            rgba(var(--accent-rgb), 0.18)
+        );
+}
+
+
+/* =========================
+   Tagline
+========================= */
+
+.tagline {
+    color: var(--text);
+
+    font-size:
+        clamp(13px, 1.55vh, 17px);
+
+    font-weight: 700;
+
+    letter-spacing: 0.24em;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================
+   Intro
+========================= */
+
+.intro {
+    max-width: 650px;
+
+    color: var(--text-soft);
+
+    font-size:
+        clamp(11px, 1.35vh, 15px);
+
+    line-height: 1.5;
+}
+
+
+/* =========================
+   Platform Cards
+========================= */
+
+.platforms {
+    width: min(
+        var(--content-width),
+        100%
+    );
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap:
+        clamp(12px, 2vw, 24px);
+
+    flex-shrink: 1;
+}
+
+
+/* =========================
+   Platform Card
+========================= */
+
+.platform {
+    height:
+        min(280px, 24vh);
+
+    min-height: 190px;
+
+    padding:
+        clamp(18px, 2vw, 30px);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    border: 1px solid var(--border);
+    border-radius: 30px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.07),
+            rgba(255, 255, 255, 0.025)
+        );
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.18),
+        inset 0 1px 0
+        rgba(255, 255, 255, 0.04);
+
+    text-decoration: none;
+
+    transition:
+        border-color var(--transition),
+        background var(--transition),
+        box-shadow var(--transition),
+        transform var(--transition);
+}
+
+
+/* =========================
+   Platform Hover
+========================= */
+
+.platform:hover {
+    border-color:
+        rgba(var(--accent-rgb), 0.45);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(var(--accent-rgb), 0.10),
+            rgba(255, 255, 255, 0.035)
+        );
+
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.25),
+        0 0 30px
+        rgba(var(--accent-rgb), 0.08);
+
+    transform: translateY(-8px);
+}
+
+
+/* =========================
+   Instagram Card
+========================= */
+
+.platform.instagram {
+    height:
+        min(310px, 27vh);
+
+    min-height: 210px;
+
+    position: relative;
+
+    top: -8px;
+
+    border-color:
+        rgba(var(--accent-rgb), 0.28);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(var(--accent-rgb), 0.11),
+            rgba(255, 255, 255, 0.035)
+        );
+
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.22),
+        0 0 35px
+        rgba(var(--accent-rgb), 0.10);
+}
+
+.platform.instagram:hover {
+    top: -15px;
+}
+
+
+/* =========================
+   Platform Icon
+========================= */
+
+.platform-icon {
+    width:
+        clamp(48px, 5vw, 68px);
+
+    height:
+        clamp(48px, 5vw, 68px);
+
+    margin-bottom:
+        clamp(10px, 1.8vh, 20px);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border:
+        1px solid
+        rgba(var(--accent-rgb), 0.35);
+
+    border-radius: 20px;
+
+    background:
+        rgba(var(--accent-rgb), 0.08);
+
+    color: var(--accent);
+
+    font-size:
+        clamp(22px, 2.2vw, 30px);
+
+    box-shadow:
+        0 0 25px
+        rgba(var(--accent-rgb), 0.08);
+}
+
+
+/* =========================
+   Platform Heading
+========================= */
+
+.platform h2 {
+    margin-bottom:
+        clamp(4px, 0.8vh, 9px);
+
+    color: var(--text);
+
+    font-size:
+        clamp(17px, 1.9vw, 22px);
+
+    font-weight: 800;
+
+    letter-spacing: -0.02em;
+}
+
+
+/* =========================
+   Platform Description
+========================= */
+
+.platform p {
+    max-width: 260px;
+
+    color: var(--text-soft);
+
+    font-size:
+        clamp(11px, 1.15vw, 13px);
+
+    line-height: 1.5;
+}
+
+
+/* =========================
+   Platform CTA
+========================= */
+
+.platform-cta {
+    margin-top:
+        clamp(8px, 1.5vh, 18px);
+
+    color: var(--accent);
+
+    font-size:
+        clamp(11px, 1.15vw, 13px);
+
+    font-weight: 700;
+
+    letter-spacing: 0.03em;
+
+    transition: color var(--transition);
+}
+
+.platform:hover .platform-cta {
+    color: var(--accent-light);
+}
+
+
+/* =========================
+   Footer
+========================= */
+
+footer {
+    flex: 0 0 var(--footer-height);
+
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-top: 1px solid var(--border);
+
+    background:
+        rgba(255, 255, 255, 0.025);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+}
+
+
+/* =========================
+   Footer Inner
+========================= */
+
+.footer-inner {
+    width: min(
+        var(--content-width),
+        calc(100% - 40px)
+    );
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+}
+
+
+/* =========================
+   Footer Brand
+========================= */
+
+.footer-brand {
+    color: var(--text);
+
+    font-size: 12px;
+    font-weight: 800;
+
+    letter-spacing: 0.16em;
+}
+
+
+/* =========================
+   Footer Information
+========================= */
+
+.footer-info {
+    display: flex;
+    align-items: center;
+
+    gap: 22px;
+}
+
+.footer-info a,
+.footer-info span {
+    color: var(--text-muted);
+
+    font-size: 11px;
+
+    text-decoration: none;
+
+    transition:
+        color var(--transition);
+}
+
+.footer-info a:hover {
+    color: var(--accent);
+}
+
+
+/* =========================
+   Footer Right
+========================= */
+
+.footer-right {
+    display: flex;
+    align-items: center;
+
+    gap: 18px;
+}
+
+.copyright {
+    color: var(--text-muted);
+
+    font-size: 10px;
+}
+
+
+/* =========================
+   Theme Toggle
+========================= */
+
+.theme-toggle {
+    width: 34px;
+    height: 34px;
+
+    padding: 3px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid var(--border);
+    border-radius: 50%;
+
+    background:
+        rgba(255, 255, 255, 0.05);
+
+    cursor: pointer;
+
+    transition:
+        border-color var(--transition),
+        transform var(--transition);
+}
+
+.theme-toggle:hover {
+    border-color:
+        rgba(var(--accent-rgb), 0.5);
+
+    transform: rotate(15deg);
+}
+
+
+/* =========================
+   Theme Ball
+========================= */
+
+.theme-ball {
+    width: 26px;
+    height: 26px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    border: 2px solid var(--text);
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            to bottom,
+            var(--accent) 0 47%,
+            var(--text) 47% 53%,
+            #444 53% 100%
+        );
+}
+
+.theme-ball::after {
+    content: "";
+
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    width: 7px;
+    height: 7px;
+
+    transform:
+        translate(-50%, -50%);
+
+    border:
+        2px solid #444;
+
+    border-radius: 50%;
+
+    background: var(--text);
+}
+
+
+/* =========================
+   Mobile
+========================= */
+
+@media (max-width: 800px) {
+
+    :root {
+        --nav-height: 52px;
+        --footer-height: 58px;
+    }
+
+
+    /* Navigation */
+
+    .navbar {
+        width:
+            calc(100% - 20px);
+
+        margin-top: 10px;
+
+        padding: 0 16px;
+
+        border-radius: 15px;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .mobile-menu {
+        display: flex;
+    }
+
+
+    /* Main */
+
+    main {
+        padding: 12px 20px;
+    }
+
+
+    /* Brand */
+
+    .brand {
+        gap: 8px;
+        margin-bottom: 16px;
+    }
+
+    .logo {
+        width:
+            min(
+                70vw,
+                340px,
+                30vh
+            );
+    }
+
+    .tagline {
+        font-size: 10px;
+
+        letter-spacing: 0.16em;
+    }
+
+    .intro {
+        max-width: 500px;
+
+        font-size: 11px;
+    }
+
+
+    /* Platform layout */
+
+    .platforms {
+        grid-template-columns: 1fr;
+
+        gap: 8px;
+    }
+
+    .platform,
+    .platform.instagram {
+        width: 100%;
+
+        height: 95px;
+        min-height: 0;
+
+        padding: 12px 18px;
+
+        flex-direction: row;
+        justify-content: flex-start;
+
+        border-radius: 18px;
+
+        position: relative;
+
+        top: 0;
+    }
+
+    .platform:hover,
+    .platform.instagram:hover {
+        top: 0;
+
+        transform:
+            translateY(-2px);
+    }
+
+
+    /* Mobile platform icon */
+
+    .platform-icon {
+        flex: 0 0 48px;
+
+        width: 48px;
+        height: 48px;
+
+        margin:
+            0 16px 0 0;
+
+        border-radius: 14px;
+
+        font-size: 22px;
+    }
+
+
+    /* Mobile platform content */
+
+    .platform-content {
+        text-align: left;
+    }
+
+    .platform h2 {
+        margin-bottom: 2px;
+
+        font-size: 16px;
+    }
+
+    .platform p {
+        display: none;
+    }
+
+    .platform-cta {
+        margin-top: 3px;
+
+        font-size: 11px;
+    }
+
+
+    /* Footer */
+
+    .footer-inner {
+        width:
+            calc(100% - 20px);
+
+        justify-content: center;
+    }
+
+    .footer-brand,
+    .copyright {
+        display: none;
+    }
+
+    .footer-info {
+        gap: 14px;
+    }
+
+    .footer-info a,
+    .footer-info span {
+        font-size: 10px;
+    }
+
+    .footer-right {
+        gap: 10px;
+    }
+
+
+    /* Theme toggle */
+
+    .theme-toggle {
+        width: 30px;
+        height: 30px;
+    }
+
+    .theme-ball {
+        width: 22px;
+        height: 22px;
+    }
+
+    .theme-ball::after {
+        width: 6px;
+        height: 6px;
+    }
+}
+
+
+/* =========================
+   Small Mobile
+========================= */
+
+@media (max-width: 500px) {
+
+    .logo {
+        width:
+            min(
+                65vw,
+                280px
+            );
+    }
+
+    .brand {
+        margin-bottom: 12px;
+    }
+
+    .platform,
+    .platform.instagram {
+        height: 82px;
+    }
+
+    .platform-icon {
+        flex-basis: 42px;
+
+        width: 42px;
+        height: 42px;
+
+        margin-right: 12px;
+    }
+
+    .platform h2 {
+        font-size: 15px;
+    }
+
+    .platform-cta {
+        font-size: 10px;
+    }
+}
+
+/* =========================
+   Coming Soon
+========================= */
+
+.coming-soon {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.coming-soon h1 {
+    margin: 0;
+    color: var(--text);
+    font-size: clamp(48px, 8vw, 110px);
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-shadow:
+        0 0 30px rgba(var(--accent-rgb), 0.25);
+}

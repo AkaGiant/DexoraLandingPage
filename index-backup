@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Dexora — Pokémon • Collecting • Creativity</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         Navigation
+    ========================== -->
+
+    <nav class="navbar">
+
+        <a href="#" class="nav-brand">
+            DEX<span>ORA</span>
+        </a>
+
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">Gallery</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </div>
+
+        <button
+            class="mobile-menu"
+            id="mobileMenu"
+            aria-label="Open navigation"
+            type="button"
+        >
+            <span></span>
+        </button>
+
+    </nav>
+
+
+    <!-- =========================
+         Mobile Navigation
+    ========================== -->
+
+    <div class="mobile-nav" id="mobileNav">
+
+        <a href="#">Home</a>
+        <a href="#">Gallery</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+
+    </div>
+
+
+    <!-- =========================
+         Main Content
+    ========================== -->
+
+    <main>
+
+        <section class="brand">
+
+            <img
+                src="assets/dexora-logo.png"
+                alt="Dexora"
+                class="logo"
+            >
+
+            <p class="tagline">
+                Pokémon • Collecting • Creativity
+            </p>
+
+            <p class="intro">
+                Discover Dexora — from Pokémon collecting to custom
+                creations and everything in between.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             Platform Cards
+        ========================== -->
+
+        <section class="platforms">
+
+            <!-- Etsy -->
+            <a
+                href="#"
+                class="platform"
+                aria-label="Visit Dexora on Etsy"
+            >
+
+                <div class="platform-icon">
+                    E
+                </div>
+
+                <div class="platform-content">
+
+                    <h2>Etsy</h2>
+
+                    <p>
+                        Explore our custom Pokémon products
+                        and handmade creations.
+                    </p>
+
+                    <div class="platform-cta">
+                        Visit Etsy →
+                    </div>
+
+                </div>
+
+            </a>
+
+
+            <!-- Instagram -->
+            <a
+                href="#"
+                class="platform instagram"
+                aria-label="Visit Dexora on Instagram"
+            >
+
+                <div class="platform-icon">
+                    ◎
+                </div>
+
+                <div class="platform-content">
+
+                    <h2>Instagram</h2>
+
+                    <p>
+                        Follow Dexora for new products,
+                        projects, collections and updates.
+                    </p>
+
+                    <div class="platform-cta">
+                        @DexoraTCC →
+                    </div>
+
+                </div>
+
+            </a>
+
+
+            <!-- eBay -->
+            <a
+                href="#"
+                class="platform"
+                aria-label="Visit Dexora on eBay"
+            >
+
+                <div class="platform-icon">
+                    e
+                </div>
+
+                <div class="platform-content">
+
+                    <h2>eBay</h2>
+
+                    <p>
+                        Browse our Pokémon cards,
+                        collectibles and available stock.
+                    </p>
+
+                    <div class="platform-cta">
+                        Visit eBay →
+                    </div>
+
+                </div>
+
+            </a>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         Footer
+    ========================== -->
+
+    <footer>
+
+        <div class="footer-inner">
+
+            <div class="footer-brand">
+                DEXORA
+            </div>
+
+            <div class="footer-info">
+
+                <a href="mailto:DexoraTCC@gmail.com">
+                    DexoraTCC@gmail.com
+                </a>
+
+                <a href="#">
+                    @DexoraTCC
+                </a>
+
+            </div>
+
+            <div class="footer-right">
+
+                <span class="copyright">
+                    © 2026 Dexora
+                </span>
+
+                <button
+                    class="theme-toggle"
+                    id="themeToggle"
+                    type="button"
+                    aria-label="Switch theme"
+                >
+                    <div class="theme-ball"></div>
+                </button>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- JavaScript -->
+    <script src="js/script.js"></script>
+
+</body>
+</html>
