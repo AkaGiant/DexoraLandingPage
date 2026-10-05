@@ -10,35 +10,32 @@ const savedTheme =
 
 
 if (savedTheme === "purple") {
-    document.documentElement.dataset.theme = "purple";
+    document.documentElement.dataset.theme = "red";
 }
 
 
 themeToggle.addEventListener("click", () => {
-
-    const html =
-        document.documentElement;
-
-    const isPurple =
-        html.dataset.theme === "purple";
-
-
-    if (isPurple) {
-
-        delete html.dataset.theme;
-
-        localStorage.setItem(
-            "dexora-theme",
-            "red"
-        );
-
-    } else {
-
-        html.dataset.theme = "purple";
-
-        localStorage.setItem(
-            "dexora-theme",
-            "purple"
-        );
-    }
+    const theme = document.documentElement.dataset.theme === "red" ? "purple" : "red";
+    document.documentElement.dataset.theme = theme;
+    localStorage.setItem("dexora-theme", theme);
 });
+
+/* =========================
+   Mobile Navigation
+========================= */
+
+const mobileMenu = document.getElementById("mobileMenu");
+const mobileNav = document.getElementById("mobileNav");
+
+if (mobileMenu && mobileNav) {
+    mobileMenu.addEventListener("click", () => {
+        mobileNav.classList.toggle("active");
+    });
+
+    mobileNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+            link.addEventListener("click", () => { mobileNav.classList.remove("active");});
+        });
+
+}
